@@ -26,7 +26,7 @@ func main() {
 	// Connect to Database
 	dbInstance := db.NewDB()
 	dbCredential := models.Credential{
-		Host:         "localhost",
+		Host:         "127.0.0.1",
 		Username:     "postgres",
 		Password:     "dyvaniest123",
 		DatabaseName: "sistem_presensi",
