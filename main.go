@@ -9,7 +9,7 @@ import (
 	"sistem-presensi/models"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 	"github.com/rs/cors"
 )
 
@@ -22,10 +22,6 @@ import (
 // }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 
 	// Connect to Database
 	dbInstance := db.NewDB()
