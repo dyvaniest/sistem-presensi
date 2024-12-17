@@ -7,6 +7,7 @@ import (
 	"sistem-presensi/api"
 	"sistem-presensi/db"
 	"sistem-presensi/models"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	// "github.com/joho/godotenv"
@@ -26,12 +27,12 @@ func main() {
 	// Connect to Database
 	dbInstance := db.NewDB()
 	dbCredential := models.Credential{
-		Host:         "127.0.0.1",
-		Username:     "postgres",
-		Password:     "dyvaniest123",
-		DatabaseName: "sistem_presensi",
-		Port:         53223,
-		Schema:       "public",
+		Host:         os.Getenv("DB_HOST"),
+		Username:     os.Getenv("DB_USER"),
+		Password:     os.Getenv("DB_PASSWORD"),
+		DatabaseName: os.Getenv("DB_NAME"),
+		Port:         getEnvAsInt("DB_PORT", 5432),
+		Schema:       os.Getenv("DB_SCHEMA"),
 	}
 
 	conn, err := dbInstance.Connect(&dbCredential)
@@ -75,4 +76,12 @@ func main() {
 	// if err != nil {
 	// 	panic(err)
 	// }
+}
+
+func getEnvAsInt(key string, defaultValue int) int {
+	valueStr := os.Getenv(key)
+	if value, err := strconv.Atoi(valueStr); err == nil {
+		return value
+	}
+	return defaultValue
 }
