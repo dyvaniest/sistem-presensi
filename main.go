@@ -13,15 +13,20 @@ import (
 	"github.com/rs/cors"
 )
 
-func init() {
-	// Load .env file
+// func init() {
+// 	// Load .env file
+// 	err := godotenv.Load()
+// 	if err != nil {
+// 		log.Fatal("Error loading .env file")
+// 	}
+// }
+
+func main() {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
-}
 
-func main() {
 	// Connect to Database
 	dbInstance := db.NewDB()
 	dbCredential := models.Credential{
