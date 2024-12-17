@@ -30,7 +30,7 @@ func main() {
 		Username:     "postgres",
 		Password:     "dyvaniest123",
 		DatabaseName: "sistem_presensi",
-		Port:         5432,
+		Port:         53223,
 		Schema:       "public",
 	}
 
